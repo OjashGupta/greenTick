@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greentick/Screens/AboutUs.dart';
-import 'package:greentick/Screens/HomeScreen.dart';
-import 'package:greentick/Screens/SearchScreen.dart';
+import 'package:greentick/Screens/SwipeScreen.dart';
+import '/Screens/AboutUs.dart';
+import '/Screens/HomeScreen.dart';
+import '/Screens/SearchScreen.dart';
 
 import 'Screens/ItemScreen.dart';
 
@@ -12,19 +13,24 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const type = 1;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-        primary: Color.fromARGB(255, 113, 206, 123),
-        secondary: Colors.white,
-      )),
-      initialRoute: 'splashRoute',
-      home: HomeScreen(),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          // primary: Color.fromARGB(200, 63, 90, 39),
+          primary: Color.fromARGB(255,171, 189, 114),
+          secondary: Colors.white,
+        ),
+      ),
+      initialRoute: 'swipeRoute',
+      home: SwipeScreen(),
       routes: {
+        'swipeRoute':(context) => SwipeScreen(),
         'splashRoute': (context) => HomeScreen(),
         'searchRoute': (context) => SearchScreen(),
-        'itemRoute':(context) => ItemScreen(),
-        'aboutRoute':(context) => AboutusScreen(),
+        'itemRoute': (context) => ItemScreen(),
+        'aboutRoute': (context) => AboutusScreen(),
       },
     );
   }

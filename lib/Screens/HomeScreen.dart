@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:greentick/Screens/SearchScreen.dart';
 
@@ -8,70 +10,37 @@ class HomeScreen extends StatelessWidget {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/images/BlankScreen.png"),
-            fit: BoxFit.cover),
+            image: AssetImage("assets/images/NewScreen2.png"),
+            fit: BoxFit.fitHeight),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         // appBar: AppBar(),
         body: Container(
-          padding: EdgeInsets.only(top: 40, left: 10, right: 10),
+          padding: EdgeInsets.only(top: 40, left: 15, right: 20,bottom: 20),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Container(
-              child:
-                  Image(image: AssetImage("assets/images/GreenTickLogo.png")),
-            ),
-            const Divider(
-              color: Color.fromARGB(255, 143, 236, 152),
-              height: 0,
-              thickness: 2,
-              indent: 20,
-              endIndent: 20,
-            ),
+              Column(mainAxisAlignment: MainAxisAlignment.end,crossAxisAlignment: CrossAxisAlignment.center, children: [
             SizedBox(
-              height: 30,
-            ),
-            Container(
-              child: Image(
-                  image: AssetImage("assets/images/Light green tree.png")),
-            ),
-            SizedBox(
-              height: 80,
+              height: 600,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  child: TextButton(
-                    child: Text(
-                      'About GreenTick',
-                      style: TextStyle(
-                          fontSize: 15, decoration: TextDecoration.underline),
-                    ),
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(199, 251, 251, 251))),
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'aboutRoute');
-                    },
-                  ),
-                ),
                 SizedBox(
                   height: 75,
                   width: 75,
-                  child: TextButton(
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, 'searchRoute');
                     },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 239, 252, 183),shape: CircleBorder(),),
                     child: Icon(
                       Icons.navigate_next_outlined,
                       size: 25,
-                    ),
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(200, 235, 235, 235))),
+                      color: Color.fromARGB(255, 97, 130, 61),
+                    )
                   ),
                 ),
               ],

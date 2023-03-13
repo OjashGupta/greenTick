@@ -9,8 +9,10 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  bool food = false;
+  bool food = true;
   bool cosmetics = false;
+  // List<Widget> choice = <Widget>[Text('Food'),Text(data)];
+  List<bool> _isSelected = [true, false];
   final textController = TextEditingController();
 
   @override
@@ -19,83 +21,100 @@ class _SearchScreenState extends State<SearchScreen> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/Design Page Test.png'),
+          image: AssetImage('assets/images/Design3.png'),
           fit: BoxFit.cover,
         ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          padding: EdgeInsets.only(top: 40, left: 40, right: 30),
+          padding: EdgeInsets.only(top: 40, left: 40, right: 30, bottom: 30),
           child: Column(
             children: [
               Row(
                 children: [
                   SizedBox(
-                    height: 250,
-                  ),
-                  // ignore: prefer_const_constructors
-                  Expanded(
-                    child: TextField(
-                      controller: textController,
-                      decoration: InputDecoration(
-                        labelText: 'Search',
-                      ),
-                    ),
+                    height: 80,
                   ),
                 ],
-              ),
-              SizedBox(
-                height: 40,
               ),
               Text(
                 'Category',
                 style: TextStyle(
                   fontSize: 25,
+                  color: Color.fromARGB(255, 63, 90, 39),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Food',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Switch(
-                      value: food,
-                      activeColor: Color.fromARGB(255, 113, 206, 123),
-                      onChanged: (bool value) {
-                        setState(() {
-                          food = value;
-                          print(food);
-                        });
-                      }),
-                ],
+              SizedBox(
+                height: 30,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ToggleButtons(
                 children: [
-                  Text(
-                    'Cosmetics',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Switch(
-                      value: cosmetics,
-                      activeColor: Color.fromARGB(255, 113, 206, 123),
-                      onChanged: (bool value) {
-                        setState(() {
-                          cosmetics = value;
-                          print(food);
-                        });
-                      }),
+                  Text('Food'),
+                  Text('Cosmetics'),
                 ],
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ItemScreen()));
+                isSelected: _isSelected,
+                onPressed: (int index) {
+                  setState(() {
+                    for (int buttonIndex = 0;
+                        buttonIndex < _isSelected.length;
+                        buttonIndex++) {
+                      if (buttonIndex == index) {
+                        _isSelected[buttonIndex] = true;
+                      } else {
+                        _isSelected[buttonIndex] = false;
+                      }
+                    }
+                    food = _isSelected[0];
+                    cosmetics = _isSelected[1];
+                  });
                 },
-                child: Text('Submit'),
-              )
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                selectedBorderColor: Color.fromARGB(200, 97, 130, 61),
+                selectedColor: Colors.white,
+                fillColor: Color.fromARGB(255,171, 189, 114),
+                color: Color.fromARGB(255, 63, 90, 39),
+                constraints: const BoxConstraints(
+                  minHeight: 40.0,
+                  minWidth: 125.0,
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Expanded(
+                child: TextField(
+                  controller: textController,
+                  decoration: InputDecoration(
+                      labelText: 'Product',
+                      labelStyle: TextStyle(fontSize: 23)),
+                ),
+              ),
+              Container(
+                alignment: Alignment.bottomRight,
+                child: ButtonTheme(
+                  height: 100,
+                  child: SizedBox(
+                    height: 50,
+                    width: 100,
+                    child: ElevatedButton(
+                      style: ButtonStyle(),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ItemScreen()));
+                      },
+                      child: Text(
+                        'Search',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 248, 250, 242)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
