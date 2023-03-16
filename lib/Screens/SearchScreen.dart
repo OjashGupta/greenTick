@@ -104,7 +104,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ItemScreen(testData: afterAPIcall,)));
+                                builder: (context) => ItemScreen(afterAPIcall,)));
                       },
                       child: Text(
                         'Search',
@@ -124,4 +124,4 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
-List<ShowData> afterAPIcall = [ShowData(0.67, "Food")]; //TestData
+ShowData afterAPIcall = ShowData(0.67, "Food"); //TestData

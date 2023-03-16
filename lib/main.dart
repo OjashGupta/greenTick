@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greentick/Screens/SwipeScreen.dart';
+import 'package:greentick/utils/showData.dart';
 import '/Screens/AboutUs.dart';
 import '/Screens/HomeScreen.dart';
 import '/Screens/SearchScreen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         'swipeRoute':(context) => SwipeScreen(),
         'splashRoute': (context) => HomeScreen(),
         'searchRoute': (context) => SearchScreen(),
-        'itemRoute': (context) => ItemScreen(testData: [],),
+        'itemRoute': (context) => ItemScreen(afterAPIcall),
         'aboutRoute': (context) => AboutusScreen(),
       },
     );
