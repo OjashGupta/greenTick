@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         'swipeRoute':(context) => SwipeScreen(),
         'splashRoute': (context) => HomeScreen(),
         'searchRoute': (context) => SearchScreen(),
-        'itemRoute': (context) => ItemScreen(),
+        'itemRoute': (context) => ItemScreen(testData: [],),
         'aboutRoute': (context) => AboutusScreen(),
       },
     );

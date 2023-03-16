@@ -8,7 +8,7 @@ class SwipeScreen extends StatefulWidget {
 }
 
 class _SwipeScreenState extends State<SwipeScreen> {
-  final _controller = PageController(initialPage: 0,viewportFraction: 0.8);
+  final _controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return PageView(

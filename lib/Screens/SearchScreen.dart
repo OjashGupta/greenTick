@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:greentick/Screens/ItemScreen.dart';
+import 'package:greentick/utils/showData.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -103,7 +104,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ItemScreen()));
+                                builder: (context) => ItemScreen(testData: afterAPIcall,)));
                       },
                       child: Text(
                         'Search',
@@ -122,3 +123,5 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
+
+List<ShowData> afterAPIcall = [ShowData(0.67, "Food")]; //TestData

@@ -11,13 +11,13 @@ class HomeScreen extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage("assets/images/NewScreen2.png"),
-            fit: BoxFit.fitHeight),
+            fit: BoxFit.contain),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         // appBar: AppBar(),
         body: Container(
-          padding: EdgeInsets.only(top: 40, left: 15, right: 20,bottom: 20),
+          padding: EdgeInsets.only(left: 15, right: 20,bottom: 20),
           child:
               Column(mainAxisAlignment: MainAxisAlignment.end,crossAxisAlignment: CrossAxisAlignment.center, children: [
             SizedBox(

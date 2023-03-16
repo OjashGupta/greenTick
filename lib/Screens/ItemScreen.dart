@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:greentick/utils/Item.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../utils/sample_data.dart';
+import '../utils/showData.dart';
 
 class ItemScreen extends StatelessWidget {
   final Item item = DATA[0];
+  final List<ShowData> testData;
+
+  ItemScreen({required this.testData});
+
+  
 
   @override
   Widget build(BuildContext context) {
-    List<ShowData> testData = [
-      ShowData(0.667, "Aquatic", Color.fromRGBO(6, 27, 167, 0.498)),
-      ShowData(0.37, "Enviroment", Color.fromRGBO(121, 135, 89, 0.498))
-    ];
+    List<ShowData> useData = testData;
     return Container(
       constraints: BoxConstraints.expand(),
       decoration: BoxDecoration(
@@ -212,15 +215,15 @@ class ItemScreen extends StatelessWidget {
                           child: SfCircularChart(series: <CircularSeries>[
                             RadialBarSeries<ShowData, String>(
                                 cornerStyle: CornerStyle.bothCurve,
-                                innerRadius: '60%',
+                                innerRadius: "70%",
                                 maximumValue: 1,
+                                trackColor: Color.fromRGBO(89, 141, 193, 0.555),
+                                trackOpacity: 0.2,
                                 animationDelay: 1,
                                 animationDuration: 2,
                                 trackBorderColor:
                                     Theme.of(context).primaryColor,
-                                pointColorMapper: (ShowData data, _) =>
-                                    data.color,
-                                dataSource: testData,
+                                dataSource: useData,
                                 xValueMapper: (ShowData data, _) =>
                                     data.category,
                                 yValueMapper: (ShowData data, _) => data.value),
@@ -237,12 +240,4 @@ class ItemScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class ShowData {
-  final double value;
-  final String category;
-  final Color color;
-
-  ShowData(this.value, this.category, this.color);
 }
